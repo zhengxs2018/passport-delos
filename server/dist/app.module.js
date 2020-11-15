@@ -25,7 +25,8 @@ AppModule = __decorate([
             }),
             nestjs_redis_1.RedisModule.forRootAsync({
                 useFactory(configService) {
-                    return configService.get('redis');
+                    const config = configService.get('redis');
+                    return Object.assign(Object.assign({}, config), { host: configService.get('REDIS_HOST') || config.host, password: configService.get('REDIS_PASSWD') || config.password });
                 },
                 inject: [config_1.ConfigService]
             }),
