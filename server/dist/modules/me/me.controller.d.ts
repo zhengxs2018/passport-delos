@@ -3,9 +3,9 @@ export declare class MeController {
     private readonly userRepo;
     constructor(prismaService: PrismaService);
     personal(req: any): Promise<{
-        nickname: string;
-        avatar: string;
         uid: string;
+        avatar: string;
+        nickname: string;
         sex: number;
         isAdmin: boolean;
     }>;
